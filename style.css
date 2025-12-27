@@ -978,21 +978,214 @@ body:hover .custom-cursor {
     .hero-title {
         font-size: 3rem;
     }
-    
+
     .steam-icon {
         font-size: 2.5rem;
     }
-    
+
     .gamepad-left,
     .gamepad-right {
         display: none;
     }
-    
+
     .chart-content {
         height: 300px;
     }
-    
+
     .chart-title-main {
         font-size: 1.2rem;
+    }
+}
+
+/* ========================================
+   Canva Presentation Button & Modal
+======================================== */
+.canva-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    border: 3px solid rgba(102, 192, 244, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+    z-index: 10000;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 5px 30px rgba(102, 192, 244, 0.6);
+    color: var(--text-white);
+}
+
+.canva-float-btn:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 8px 40px rgba(102, 192, 244, 0.8);
+    border-color: var(--accent-color);
+}
+
+.canva-float-btn:active {
+    transform: scale(1.05) rotate(5deg);
+}
+
+.canva-float-btn i {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.canva-float-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* Canva Modal Styles */
+.canva-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 20000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.canva-modal.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.canva-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 60px rgba(102, 192, 244, 0.5);
+    animation: slideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow-y: auto;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.canva-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(255, 59, 59, 0.8), rgba(255, 99, 99, 0.8));
+    border: 2px solid rgba(255, 59, 59, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none;
+    color: var(--text-white);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.canva-close-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 59, 59, 1), rgba(255, 99, 99, 1));
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 5px 20px rgba(255, 59, 59, 0.6);
+}
+
+.canva-embed-container {
+    margin-top: 1rem;
+}
+
+.canva-attribution {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.canva-attribution a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.canva-attribution a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+/* Mobile Responsive for Canva Button */
+@media (max-width: 768px) {
+    .canva-float-btn {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        cursor: pointer;
+    }
+
+    .canva-float-btn i {
+        font-size: 1.75rem;
+    }
+
+    .canva-modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .canva-close-btn {
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 480px) {
+    .canva-float-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .canva-float-btn i {
+        font-size: 1.5rem;
+    }
+
+    .canva-modal-content {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+        padding: 1rem;
+    }
+
+    .canva-close-btn {
+        top: 0.5rem;
+        right: 0.5rem;
     }
 }
