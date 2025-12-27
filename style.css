@@ -1,0 +1,998 @@
+/* ========================================
+   基礎設定與變數
+======================================== */
+:root {
+    --primary-color: #1b2838;
+    --secondary-color: #2a475e;
+    --accent-color: #66c0f4;
+    --accent-hover: #4a9fd4;
+    --dark-bg: #0d1117;
+    --text-light: #c7d5e0;
+    --text-white: #ffffff;
+    --card-bg: rgba(27, 40, 56, 0.8);
+    --glow-color: #66c0f4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: linear-gradient(135deg, #0d1117 0%, #1b2838 50%, #0d1117 100%);
+    color: var(--text-light);
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* ========================================
+   自定義滑鼠游標
+======================================== */
+.custom-cursor {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, border-color 0.3s ease;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(102, 192, 244, 0.5);
+}
+
+.custom-cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.08s ease;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(102, 192, 244, 0.8);
+}
+
+body:hover .custom-cursor {
+    border-color: var(--accent-hover);
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* ========================================
+   背景效果
+======================================== */
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(102, 192, 244, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 192, 244, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(50px);
+    }
+}
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: particleFloat 15s linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   Section 通用樣式
+======================================== */
+.section {
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.container-fluid {
+    max-width: 1400px;
+}
+
+/* ========================================
+   Hero Section (首頁)
+======================================== */
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--text-white);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 
+        0 0 20px rgba(102, 192, 244, 0.8),
+        0 0 40px rgba(102, 192, 244, 0.4),
+        0 0 60px rgba(102, 192, 244, 0.2);
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 20px rgba(102, 192, 244, 0.8),
+            0 0 40px rgba(102, 192, 244, 0.4),
+            0 0 60px rgba(102, 192, 244, 0.2);
+    }
+    50% {
+        text-shadow: 
+            0 0 30px rgba(102, 192, 244, 1),
+            0 0 60px rgba(102, 192, 244, 0.6),
+            0 0 90px rgba(102, 192, 244, 0.3);
+    }
+}
+
+.title-text {
+    animation: slideInLeft 1s ease-out;
+}
+
+.steam-icon {
+    font-size: 7rem;
+    color: var(--accent-color);
+    animation: slideInRight 1s ease-out, steamPulse 2s ease-in-out infinite;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes steamPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.hero-subtitle {
+    animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: var(--text-white);
+    border: none;
+    border-radius: 50px;
+    cursor: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 5px 30px rgba(102, 192, 244, 0.4);
+    animation: fadeInUp 1.4s ease-out;
+}
+
+.scroll-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(102, 192, 244, 0.6);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+}
+
+/* ========================================
+   手把動畫
+======================================== */
+.gamepad-container {
+    position: absolute;
+    z-index: 5;
+}
+
+.gamepad-left {
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.gamepad-right {
+    right: 5%;
+    top: 10%;
+    transform: rotate(45deg);
+}
+
+.gamepad-image {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 0 20px rgba(102, 192, 244, 0.6));
+    transition: all 0.3s ease;
+}
+
+.gamepad-image:hover {
+    filter: drop-shadow(0 0 30px rgba(102, 192, 244, 1));
+    transform: scale(1.1);
+}
+
+/* 首頁手把浮動動畫 */
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-20px) rotate(-45deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(-45deg);
+    }
+}
+
+/* 掉落動畫 */
+.gamepad-dropped {
+    opacity: 0;
+    animation: dropIn 1s ease-out forwards;
+}
+
+@keyframes dropIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-200px) rotate(0deg);
+    }
+    60% {
+        transform: translateY(20px) rotate(360deg);
+    }
+    80% {
+        transform: translateY(-10px) rotate(380deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(405deg);
+    }
+}
+
+/* ========================================
+   滾動指示器
+======================================== */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeInUp 1.6s ease-out;
+}
+
+.scroll-mouse {
+    width: 30px;
+    height: 50px;
+    border: 3px solid var(--accent-color);
+    border-radius: 20px;
+    position: relative;
+}
+
+.scroll-mouse::before {
+    content: '';
+    width: 6px;
+    height: 10px;
+    background: var(--accent-color);
+    border-radius: 3px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+}
+
+/* ========================================
+   Charts Section
+======================================== */
+.charts-section {
+    background: linear-gradient(135deg, rgba(13, 17, 23, 0.9) 0%, rgba(27, 40, 56, 0.9) 100%);
+    padding-top: 0 !important;
+}
+
+/* ========================================
+   Chart Navigation Bar (Left Sidebar)
+======================================== */
+.chart-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background: linear-gradient(180deg, rgba(27, 40, 56, 0.98) 0%, rgba(27, 40, 56, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-right: 2px solid rgba(102, 192, 244, 0.3);
+    z-index: 1000;
+    padding: 2rem 0;
+    box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.chart-navbar.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.chart-navbar.collapsed {
+    width: 80px;
+}
+
+.chart-navbar.collapsed .nav-item span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.chart-navbar.collapsed .navbar-container {
+    padding: 0 0.5rem;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 120px;
+    background: linear-gradient(135deg, rgba(27, 40, 56, 0.95), rgba(42, 71, 94, 0.95));
+    border: 2px solid rgba(102, 192, 244, 0.5);
+    border-left: none;
+    border-radius: 0 15px 15px 0;
+    cursor: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1001;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-toggle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0 15px 15px 0;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    background: linear-gradient(135deg, rgba(42, 71, 94, 0.98), rgba(27, 40, 56, 0.98));
+    border-color: var(--accent-color);
+    color: var(--text-white);
+    transform: translateY(-50%) translateX(5px);
+    box-shadow: 5px 0 25px rgba(102, 192, 244, 0.5);
+}
+
+.sidebar-toggle:hover::before {
+    opacity: 1;
+}
+
+.sidebar-toggle i {
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    filter: drop-shadow(0 0 8px rgba(102, 192, 244, 0.6));
+}
+
+.chart-navbar.collapsed .sidebar-toggle i {
+    transform: rotate(180deg);
+}
+
+.sidebar-toggle:active {
+    transform: translateY(-50%) translateX(2px) scale(0.95);
+}
+
+.navbar-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 0 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) rgba(27, 40, 56, 0.5);
+}
+
+.navbar-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.navbar-container::-webkit-scrollbar-track {
+    background: rgba(27, 40, 56, 0.5);
+    border-radius: 3px;
+}
+
+.navbar-container::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+}
+
+.navbar-container::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+}
+
+.nav-item {
+    font-family: 'Orbitron', sans-serif;
+    background: rgba(42, 71, 94, 0.5);
+    border: 2px solid rgba(102, 192, 244, 0.3);
+    border-radius: 10px;
+    color: var(--text-light);
+    cursor: none;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: normal;
+    text-align: left;
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav-item span {
+    transition: opacity 0.3s ease, width 0.3s ease;
+    display: inline-block;
+}
+
+.nav-item i {
+    min-width: 20px;
+    text-align: center;
+}
+
+.nav-item:hover {
+    background: rgba(42, 71, 94, 0.8);
+    border-color: var(--accent-color);
+    color: var(--text-white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(102, 192, 244, 0.4);
+}
+
+.nav-item.active {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    border-color: var(--accent-color);
+    color: var(--text-white);
+    box-shadow: 0 5px 30px rgba(102, 192, 244, 0.6);
+}
+
+/* ========================================
+   Carousel Styles
+======================================== */
+.carousel-container {
+    padding-top: 50px;
+    margin-left: 0;
+    transition: margin-left 0.5s ease;
+}
+
+.carousel-container.with-sidebar {
+    margin-left: 280px;
+}
+
+.carousel-container.with-sidebar-collapsed {
+    margin-left: 80px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 0 80px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s ease;
+    padding: 0 2rem;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.chart-card-full {
+    background: var(--card-bg);
+    border: 2px solid rgba(102, 192, 244, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-card-full:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 60px rgba(102, 192, 244, 0.4);
+}
+
+.chart-title-main {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 20px rgba(102, 192, 244, 0.5);
+}
+
+.chart-content {
+    width: 100%;
+    max-width: 1000px;
+    height: 650px;
+    background: rgba(13, 17, 23, 0.5);
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.chart-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 隱藏 MongoDB Charts 的品牌標誌 */
+.chart-iframe iframe[src*="mongodb"],
+#chart1 iframe,
+#chart2 iframe,
+#chart3 iframe,
+#chart4 iframe,
+#chart5 iframe,
+#chart6 iframe {
+    background: transparent !important;
+}
+
+/* 隱藏 MongoDB 屬性標示 */
+#chart1 > div > div:last-child,
+#chart2 > div > div:last-child,
+#chart3 > div > div:last-child,
+#chart4 > div > div:last-child,
+#chart5 > div > div:last-child,
+#chart6 > div > div:last-child {
+    display: none !important;
+}
+
+@keyframes numberGlow {
+    0%, 100% {
+        text-shadow:
+            0 0 20px rgba(102, 192, 244, 0.8),
+            0 0 40px rgba(102, 192, 244, 0.4),
+            0 0 60px rgba(102, 192, 244, 0.2);
+    }
+    50% {
+        text-shadow:
+            0 0 30px rgba(102, 192, 244, 1),
+            0 0 60px rgba(102, 192, 244, 0.6),
+            0 0 90px rgba(102, 192, 244, 0.4);
+    }
+}
+
+/* 圖表載入動畫 */
+.chart-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(13, 17, 23, 0.3);
+    z-index: 100;
+    transition: opacity 0.3s ease;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(102, 192, 244, 0.2);
+    border-top: 4px solid var(--accent-color);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loading-bar {
+    width: 200px;
+    height: 4px;
+    background: rgba(102, 192, 244, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+    border-radius: 2px;
+    animation: loadingProgress 2s ease-in-out infinite;
+}
+
+@keyframes loadingProgress {
+    0% {
+        width: 0%;
+        transform: translateX(0);
+    }
+    50% {
+        width: 100%;
+        transform: translateX(0);
+    }
+    100% {
+        width: 100%;
+        transform: translateX(100%);
+    }
+}
+
+/* 數字滾動動畫效果 */
+@keyframes numberRoll {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   Carousel Controls
+======================================== */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(102, 192, 244, 0.8), rgba(74, 159, 212, 0.8));
+    border: 2px solid var(--accent-color);
+    width: 60px;
+    height: 60px;
+    cursor: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: var(--text-white);
+    font-size: 1.5rem;
+    box-shadow: 0 5px 30px rgba(102, 192, 244, 0.5);
+}
+
+.carousel-control:hover {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 40px rgba(102, 192, 244, 0.7);
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+/* ========================================
+   Carousel Indicators
+======================================== */
+.indicator {
+    width: 12px;
+    height: 12px;
+    background: rgba(102, 192, 244, 0.3);
+    border: 2px solid rgba(102, 192, 244, 0.5);
+    cursor: none;
+    transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    background: rgba(102, 192, 244, 0.6);
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(102, 192, 244, 0.8);
+    transform: scale(1.3);
+}
+
+/* ========================================
+   響應式設計
+======================================== */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 6rem;
+    }
+    
+    .steam-icon {
+        font-size: 5rem;
+    }
+    
+    .carousel-control {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-control.prev {
+        left: 5px;
+    }
+    
+    .carousel-control.next {
+        right: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 4rem;
+        flex-direction: column;
+    }
+
+    .steam-icon {
+        font-size: 3.5rem;
+    }
+
+    .gamepad-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .custom-cursor,
+    .custom-cursor-dot {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
+
+    .scroll-button,
+    .carousel-control,
+    .nav-item,
+    .indicator {
+        cursor: pointer;
+    }
+
+    /* Navbar 響應式 - 改為底部橫向 */
+    .chart-navbar {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-top: 2px solid rgba(102, 192, 244, 0.3);
+        padding: 0.5rem 0;
+        transform: translateY(100%);
+    }
+
+    .chart-navbar.visible {
+        transform: translateY(0);
+    }
+
+    .chart-navbar.collapsed {
+        width: 100%;
+    }
+
+    /* Hide toggle button on mobile */
+    .sidebar-toggle {
+        display: none;
+    }
+
+    .navbar-container {
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .navbar-container::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .nav-item {
+        font-size: 0.75rem;
+        flex-shrink: 0;
+        width: auto;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    .nav-item i {
+        font-size: 1.2rem;
+    }
+
+    /* Carousel 響應式 */
+    .carousel-container,
+    .carousel-container.with-sidebar {
+        padding-top: 50px;
+        margin-left: 0;
+    }
+
+    .carousel-wrapper {
+        padding: 0 50px;
+    }
+
+    .carousel-slide {
+        padding: 0 1rem;
+    }
+
+    .chart-title-main {
+        font-size: 1.5rem;
+        flex-direction: column;
+    }
+
+    .chart-content {
+        height: 400px;
+    }
+
+    .carousel-control {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .carousel-control.prev {
+        left: 5px;
+    }
+
+    .carousel-control.next {
+        right: 5px;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .steam-icon {
+        font-size: 2.5rem;
+    }
+    
+    .gamepad-left,
+    .gamepad-right {
+        display: none;
+    }
+    
+    .chart-content {
+        height: 300px;
+    }
+    
+    .chart-title-main {
+        font-size: 1.2rem;
+    }
+}

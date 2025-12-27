@@ -1,0 +1,24 @@
+# 環境配置文件 - 包含敏感資訊
+.env
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 系統文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 臨時文件
+*.log
+*.tmp

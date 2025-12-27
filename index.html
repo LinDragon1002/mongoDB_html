@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam Game Analytics Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <!-- Section 1: Hero Section -->
+    <section id="hero" class="section">
+        <div class="container-fluid px-4">
+            <!-- Floating Gamepad (Left) -->
+            <div class="gamepad-container gamepad-left">
+                <img src="https://cdn-icons-png.flaticon.com/512/686/686589.png" alt="Gamepad"
+                    class="gamepad-image floating">
+            </div>
+
+            <!-- Main Title -->
+            <div class="text-center position-relative" style="z-index: 10;">
+                <h1 class="hero-title d-flex align-items-center justify-content-center gap-4 mb-3">
+                    <span class="title-text">STEAM</span>
+                    <i class="fa-brands fa-steam steam-icon"></i>
+                </h1>
+                <p class="hero-subtitle fs-2 text-light mb-5">Game Analytics Dashboard</p>
+                <button class="btn btn-lg scroll-button px-5 py-3" onclick="scrollToSection('charts')">
+                    Explore Data
+                    <i class="fas fa-chevron-down ms-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse"></div>
+        </div>
+    </section>
+
+    <!-- Section 2: Charts Carousel Section -->
+    <section id="charts" class="section charts-section">
+        <!-- Navigation Bar -->
+        <nav class="chart-navbar">
+            <div class="navbar-container">
+                <button class="nav-item active d-flex align-items-center gap-2 px-3 py-2" data-slide="0">
+                    <i class="fas fa-users"></i>
+                    <span>遊戲總數</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="1">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>遊戲支援作業系統分析</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="2">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>prcie top 10</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="3">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>遊戲類別 top 10</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="4">
+                    <i class="fas fa-star"></i>
+                    <span>作業系統發行數</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="5">
+                    <i class="fas fa-trophy"></i>
+                    <span>100美金以下遊戲價格區間數量</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="6">
+                    <i class="fas fa-language"></i>
+                    <span>支援的語言 top 20</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="7">
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>遊戲評價</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="8">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <span>DLC 總數</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="9">
+                    <i class="fas fa-gamepad"></i>
+                    <span>有發行DLC 的遊戲數 (個)</span>
+                </button>
+                <button class="nav-item d-flex align-items-center gap-2 px-3 py-2" data-slide="10">
+                    <i class="fas fa-gamepad"></i>
+                    <span>近 10 年年度流行遊戲類別排名</span>
+                </button>
+
+            </div>
+        </nav>
+
+        <div class="container carousel-container">
+            <!-- Gamepad in corner (after drop animation) -->
+            <div class="gamepad-container gamepad-dropped gamepad-right">
+                <img src="https://cdn-icons-png.flaticon.com/512/686/686589.png" alt="Gamepad" class="gamepad-image">
+            </div>
+
+            <!-- Carousel Wrapper -->
+            <div class="carousel-wrapper">
+                <!-- Chart Slides -->
+                <div class="carousel-track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-users"></i>
+                                遊戲總數
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart1" class="chart-iframe d-flex align-items-center justify-content-center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-chart-pie"></i>
+                                遊戲支援作業系統分析
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart2" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-calendar-alt"></i>
+                                prcie top 10
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart3" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-dollar-sign"></i>
+                                遊戲類別 top 10
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart4" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-star"></i>
+                                作業系統發行數
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart5" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-trophy"></i>
+                                100美金以下遊戲價格區間數量
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart6" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 7 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-language"></i>
+                                支援的語言 top 20
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart7" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 8 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-star-half-alt"></i>
+                                遊戲評價
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart8" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 9 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-puzzle-piece"></i>
+                                DLC 總數
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart9" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 10 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-gamepad"></i>
+                                有發行DLC 的遊戲數 (個)
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart10" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 11 -->
+                    <div class="carousel-slide">
+                        <div class="chart-card-full p-4 rounded-4">
+                            <h3
+                                class="chart-title-main d-flex align-items-center justify-content-center gap-3 mb-4 text-center">
+                                <i class="fas fa-gamepad"></i>
+                                近 10 年年度流行遊戲類別排名
+                            </h3>
+                            <div class="chart-content rounded-3 d-flex align-items-center justify-content-center">
+                                <div id="chart11" class="chart-iframe"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control prev d-flex align-items-center justify-content-center rounded-circle"
+                    id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-control next d-flex align-items-center justify-content-center rounded-circle"
+                    id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators d-flex justify-content-center gap-3 mt-5">
+                    <span class="indicator active rounded-circle" data-slide="0"></span>
+                    <span class="indicator rounded-circle" data-slide="1"></span>
+                    <span class="indicator rounded-circle" data-slide="2"></span>
+                    <span class="indicator rounded-circle" data-slide="3"></span>
+                    <span class="indicator rounded-circle" data-slide="4"></span>
+                    <span class="indicator rounded-circle" data-slide="5"></span>
+                    <span class="indicator rounded-circle" data-slide="6"></span>
+                    <span class="indicator rounded-circle" data-slide="7"></span>
+                    <span class="indicator rounded-circle" data-slide="8"></span>
+                    <span class="indicator rounded-circle" data-slide="9"></span>
+                    <span class="indicator rounded-circle" data-slide="10"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Background Effects -->
+    <div class="grid-background"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- MongoDB Charts Embedding SDK -->
+    <script src="https://unpkg.com/@mongodb-js/charts-embed-dom"></script>
+
+    <!-- Bootstrap Bundle JS (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript (使用 ES6 模組) -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
