@@ -25,6 +25,12 @@ body {
     color: var(--text-light);
     overflow-x: hidden;
     cursor: none;
+    max-width: 100vw;
+}
+
+html {
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 /* ========================================
@@ -887,11 +893,13 @@ body:hover .custom-cursor {
         border-right: none;
         border-top: 2px solid rgba(102, 192, 244, 0.3);
         padding: 0.5rem 0;
-        transform: translateY(100%);
+        transform: translateY(0);
+        opacity: 1;
     }
 
     .chart-navbar.visible {
         transform: translateY(0);
+        opacity: 1;
     }
 
     .chart-navbar.collapsed {
@@ -935,42 +943,61 @@ body:hover .custom-cursor {
     .carousel-container.with-sidebar {
         padding-top: 50px;
         margin-left: 0;
+        padding-bottom: 80px;
+        overflow-x: hidden;
     }
 
     .carousel-wrapper {
-        padding: 0 50px;
+        padding: 0 1rem;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     .carousel-slide {
-        padding: 0 1rem;
+        padding: 0;
+        min-width: 100%;
     }
 
     .chart-title-main {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         flex-direction: column;
+        gap: 0.5rem !important;
+        margin-bottom: 1rem !important;
     }
 
     .chart-content {
-        height: 400px;
+        height: 500px;
+        min-height: 500px;
+        max-width: 100%;
+        width: 100%;
     }
 
+    .chart-card-full {
+        padding: 1rem !important;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .chart-iframe {
+        width: 100%;
+        height: 100%;
+        min-width: 100%;
+    }
+
+    /* 隱藏手機版的左右箭頭 */
     .carousel-control {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-
-    .carousel-control.prev {
-        left: 5px;
-    }
-
-    .carousel-control.next {
-        right: 5px;
+        display: none;
     }
 
     .indicator {
         width: 10px;
         height: 10px;
+    }
+
+    .carousel-indicators {
+        margin-top: 2rem !important;
+        gap: 0.5rem !important;
     }
 }
 
@@ -988,12 +1015,49 @@ body:hover .custom-cursor {
         display: none;
     }
 
+    .carousel-container,
+    .carousel-container.with-sidebar {
+        overflow-x: hidden !important;
+    }
+
     .chart-content {
-        height: 300px;
+        height: 450px;
+        min-height: 450px;
+        max-width: 100%;
+        width: 100%;
     }
 
     .chart-title-main {
-        font-size: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .carousel-wrapper {
+        padding: 0 0.75rem;
+        max-width: 100%;
+        overflow: hidden !important;
+    }
+
+    .carousel-slide {
+        padding: 0;
+        min-width: 100%;
+    }
+
+    .chart-card-full {
+        padding: 0.75rem !important;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .chart-iframe {
+        width: 100%;
+        height: 100%;
+        min-width: 100%;
+    }
+
+    /* 確保箭頭在小螢幕也隱藏 */
+    .carousel-control {
+        display: none !important;
     }
 }
 
