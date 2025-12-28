@@ -1,0 +1,14 @@
+/* ========================================
+   基礎設定與變數
+======================================== */
+:root {
+    --primary-color: #1b2838;
+    --secondary-color: #2a475e;
+    --accent-color: #66c0f4;
+    --accent-hover: #4a9fd4;
+    --dark-bg: #0d1117;
+    --text-light: #c7d5e0;
+    --text-white: #ffffff;
+    --card-bg: rgba(27, 40, 56, 0.8);
+    --glow-color: #66c0f4;
+}

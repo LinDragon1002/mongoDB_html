@@ -1,0 +1,197 @@
+/* ========================================
+   Hero Section (首頁)
+======================================== */
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--text-white);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow:
+        0 0 20px rgba(102, 192, 244, 0.8),
+        0 0 40px rgba(102, 192, 244, 0.4),
+        0 0 60px rgba(102, 192, 244, 0.2);
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow:
+            0 0 20px rgba(102, 192, 244, 0.8),
+            0 0 40px rgba(102, 192, 244, 0.4),
+            0 0 60px rgba(102, 192, 244, 0.2);
+    }
+    50% {
+        text-shadow:
+            0 0 30px rgba(102, 192, 244, 1),
+            0 0 60px rgba(102, 192, 244, 0.6),
+            0 0 90px rgba(102, 192, 244, 0.3);
+    }
+}
+
+.title-text {
+    animation: slideInLeft 1s ease-out;
+}
+
+.steam-icon {
+    font-size: 7rem;
+    color: var(--accent-color);
+    animation: slideInRight 1s ease-out, steamPulse 2s ease-in-out infinite;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes steamPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.hero-subtitle {
+    animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: var(--text-white);
+    border: none;
+    border-radius: 50px;
+    cursor: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 5px 30px rgba(102, 192, 244, 0.4);
+    animation: fadeInUp 1.4s ease-out;
+}
+
+.scroll-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(102, 192, 244, 0.6);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+}
+
+/* ========================================
+   手把動畫
+======================================== */
+.gamepad-container {
+    position: absolute;
+    z-index: 5;
+}
+
+.gamepad-left {
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.gamepad-right {
+    right: 5%;
+    top: 10%;
+    transform: rotate(45deg);
+}
+
+.gamepad-image {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 0 20px rgba(102, 192, 244, 0.6));
+    transition: all 0.3s ease;
+}
+
+.gamepad-image:hover {
+    filter: drop-shadow(0 0 30px rgba(102, 192, 244, 1));
+    transform: scale(1.1);
+}
+
+/* 首頁手把浮動動畫 */
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-20px) rotate(-45deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(-45deg);
+    }
+}
+
+/* ========================================
+   滾動指示器
+======================================== */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeInUp 1.6s ease-out;
+}
+
+.scroll-mouse {
+    width: 30px;
+    height: 50px;
+    border: 3px solid var(--accent-color);
+    border-radius: 20px;
+    position: relative;
+}
+
+.scroll-mouse::before {
+    content: '';
+    width: 6px;
+    height: 10px;
+    background: var(--accent-color);
+    border-radius: 3px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+}

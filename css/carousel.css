@@ -1,0 +1,100 @@
+/* ========================================
+   Carousel Styles
+======================================== */
+.carousel-container {
+    padding-top: 50px;
+    margin-left: 0;
+    transition: margin-left 0.5s ease;
+}
+
+.carousel-container.with-sidebar {
+    margin-left: 280px;
+}
+
+.carousel-container.with-sidebar-collapsed {
+    margin-left: 80px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 0 80px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s ease;
+    padding: 0 2rem;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ========================================
+   Carousel Controls
+======================================== */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(102, 192, 244, 0.8), rgba(74, 159, 212, 0.8));
+    border: 2px solid var(--accent-color);
+    width: 60px;
+    height: 60px;
+    cursor: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: var(--text-white);
+    font-size: 1.5rem;
+    box-shadow: 0 5px 30px rgba(102, 192, 244, 0.5);
+}
+
+.carousel-control:hover {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 40px rgba(102, 192, 244, 0.7);
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+/* ========================================
+   Carousel Indicators
+======================================== */
+.indicator {
+    width: 12px;
+    height: 12px;
+    background: rgba(102, 192, 244, 0.3);
+    border: 2px solid rgba(102, 192, 244, 0.5);
+    cursor: none;
+    transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    background: rgba(102, 192, 244, 0.6);
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(102, 192, 244, 0.8);
+    transform: scale(1.3);
+}
